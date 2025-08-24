@@ -1,0 +1,2715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#0f2b46">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Auric Africa Resources - Your One-Stop Gold Buying Destination in Africa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c9a961;
+            --primary-dark: #b8945a;
+            --secondary: #0f2b46; /* Dark blue for dark mode */
+            --secondary-light: #1a3a5c; /* Lighter shade of dark blue */
+            --text: #333;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --success: #27ae60;
+            --danger: #e74c3c;
+            --whatsapp: #25D366;
+            --transition: all 0.3s ease;
+            --border-radius: 15px;
+            --header-height: 70px;
+        }
+
+        /* Light mode variables */
+        [data-theme="light"] {
+            --secondary: #ffffff; /* White for light mode */
+            --secondary-light: #f0f0f0; /* Light gray for light mode */
+            --text: #333;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .theme-toggle-btn {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .theme-toggle-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--secondary);
+            color: var(--white);
+            height: var(--header-height);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header.scrolled {
+            height: 60px;
+            background-color: rgba(15, 43, 70, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        [data-theme="light"] header.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            padding: 0 15px;
+        }
+
+        .gold-price {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            padding: 8px 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        [data-theme="light"] .gold-price {
+            background-color: rgba(0, 0, 0, 0.05);
+            color: var(--text);
+        }
+
+        .gold-price:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        [data-theme="light"] .gold-price:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .gold-price i {
+            margin-right: 8px;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .price-change {
+            margin-left: 10px;
+            font-size: 0.85rem;
+        }
+
+        .price-change.down {
+            color: var(--danger);
+        }
+
+        .price-change.up {
+            color: var(--success);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .logo {
+            color: var(--text);
+        }
+
+        .logo:hover {
+            color: var(--primary);
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .menu-toggle {
+            color: var(--text);
+        }
+
+        .menu-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="light"] .menu-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+            padding: 5px 0;
+            font-size: 0.95rem;
+        }
+
+        [data-theme="light"] nav ul li a {
+            color: var(--text);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(15, 43, 70, 0.8), rgba(15, 43, 70, 0.8)), url('https://images.unsplash.com/photo-1610375461246-83df859d849d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: calc(var(--header-height) + 50px) 0 80px;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .hero {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1610375461246-83df859d849d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(15, 43, 70, 0.4) 100%);
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .hero::before {
+            background: radial-gradient(circle at center, transparent 0%, rgba(255, 255, 255, 0.4) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+            width: 100%;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--white), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .hero h1 {
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: rgba(255, 255, 255, 0.9);
+            padding: 0 20px;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .hero p {
+            color: var(--text);
+        }
+
+        .price-range {
+            font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+            font-weight: 600;
+            color: var(--primary);
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            display: inline-block;
+            backdrop-filter: blur(5px);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .price-range {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .live-price {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            max-width: 450px;
+            margin: 0 auto 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .live-price {
+            background-color: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .live-price:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .live-price h2 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .price-value {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .price-value i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        .price-change {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .price-change i {
+            margin-right: 5px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 5px 15px rgba(201, 169, 97, 0.3);
+            touch-action: manipulation;
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, var(--whatsapp), #128C7E);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(201, 169, 97, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Vision Section */
+        .vision {
+            padding: 80px 0;
+            background-color: var(--white);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .vision {
+            background-color: var(--bg-light);
+        }
+
+        .vision-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .vision h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .vision h2 {
+            color: var(--text);
+        }
+
+        .vision h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            border-radius: 2px;
+        }
+
+        .vision p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            transition: var(--transition);
+        }
+
+        .vision-values {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .vision-value {
+            background-color: var(--bg-light);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            width: 200px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .vision-value {
+            background-color: var(--white);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .vision-value:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .vision-value i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .vision-value h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .vision-value h3 {
+            color: var(--text);
+        }
+
+        /* Buying Process Section */
+        .buying-process {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .buying-process {
+            background-color: var(--white);
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 50px;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 50px;
+            right: 50px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            z-index: 1;
+        }
+
+        .process-step {
+            background-color: var(--white);
+            width: 220px;
+            padding: 30px 20px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .process-step {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .process-step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        .process-step i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .process-step h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .process-step h3 {
+            color: var(--text);
+        }
+
+        .process-step p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        /* Gold Products Section */
+        .gold-products {
+            padding: 80px 0;
+            background-color: var(--white);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .gold-products {
+            background-color: var(--bg-light);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        [data-theme="light"] .product-card {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            height: 200px;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .product-content {
+            padding: 25px;
+        }
+
+        .product-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .product-content h3 {
+            color: var(--text);
+        }
+
+        .product-content p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .product-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .product-features i {
+            color: var(--success);
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Payment Options Section */
+        .payment-options {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .payment-options {
+            background-color: var(--white);
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .payment-method {
+            background-color: var(--white);
+            width: 200px;
+            height: 120px;
+            border-radius: var(--border-radius);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .payment-method {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-method:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-method i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .payment-method h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .payment-method h3 {
+            color: var(--text);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 0;
+            background-color: var(--white);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .testimonials {
+            background-color: var(--bg-light);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background-color: var(--bg-light);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .testimonial-card {
+            background-color: var(--white);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-card::before {
+            content: '\f10d';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2rem;
+            color: rgba(201, 169, 97, 0.2);
+        }
+
+        .testimonial-content {
+            margin-bottom: 20px;
+            font-style: italic;
+            color: var(--text-light);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            margin-right: 15px;
+        }
+
+        .author-info h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 5px;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .author-info h4 {
+            color: var(--text);
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .services {
+            background-color: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .section-title {
+            color: var(--text);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            transition: var(--transition);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 35px 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        [data-theme="light"] .service-card {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .service-card h3 {
+            color: var(--text);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+            flex-grow: 1;
+            transition: var(--transition);
+        }
+
+        /* Excellence Section */
+        .excellence {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--white);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .excellence {
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            color: var(--text);
+        }
+
+        .excellence::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjAyKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.3;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .excellence::before {
+            opacity: 0.1;
+        }
+
+        .excellence .section-title {
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .excellence .section-title {
+            color: var(--text);
+        }
+
+        .excellence .section-title::after {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+        }
+
+        .excellence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .excellence-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 25px 15px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        [data-theme="light"] .excellence-card {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .excellence-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="light"] .excellence-card:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .excellence-icon {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+
+        .excellence-card:hover .excellence-icon {
+            transform: scale(1.1);
+        }
+
+        .excellence-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .excellence-card h3 {
+            color: var(--text);
+        }
+
+        .excellence-card p {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 5px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .contact {
+            background-color: var(--white);
+        }
+
+        .contact-form {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .contact-form {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--secondary);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .form-group label {
+            color: var(--text);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+            background-color: rgba(0, 0, 0, 0.01);
+            color: var(--text);
+        }
+
+        [data-theme="light"] .form-group input,
+        [data-theme="light"] .form-group textarea,
+        [data-theme="light"] .form-group select {
+            background-color: var(--bg-light);
+            border: 2px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            background-color: rgba(201, 169, 97, 0.05);
+        }
+
+        [data-theme="light"] .form-group input:focus,
+        [data-theme="light"] .form-group textarea:focus,
+        [data-theme="light"] .form-group select:focus {
+            background-color: rgba(201, 169, 97, 0.05);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 70px 0 20px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] footer {
+            background-color: var(--bg-light);
+            color: var(--text);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .footer-column h3 {
+            color: var(--text);
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .footer-column p {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .footer-column p {
+            color: var(--text-light);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        [data-theme="light"] .footer-links a {
+            color: var(--text-light);
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .contact-info li {
+            color: var(--text-light);
+        }
+
+        .contact-info i {
+            margin-right: 15px;
+            color: var(--primary);
+            font-size: 1.1rem;
+            width: 25px;
+            text-align: center;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .copyright {
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            color: var(--text-light);
+        }
+
+        .copyright a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .copyright a {
+            color: var(--text-light);
+        }
+
+        .copyright a:hover {
+            color: var(--primary);
+        }
+
+        /* Notification Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1001;
+            max-width: 90%;
+        }
+
+        [data-theme="light"] .toast {
+            background-color: var(--white);
+            color: var(--text);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        /* Loading Spinner */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--secondary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        [data-theme="light"] .loader {
+            background-color: var(--bg-light);
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        [data-theme="light"] .loader-spinner {
+            border: 5px solid rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 30px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            
+            .excellence-grid {
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            }
+            
+            .process-steps::before {
+                display: none;
+            }
+            
+            .process-step {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --header-height: 60px;
+            }
+            
+            header.scrolled {
+                height: 50px;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--secondary);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                border-radius: 0 0 var(--border-radius) var(--border-radius);
+            }
+            
+            [data-theme="light"] nav ul {
+                background-color: var(--white);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            nav ul li a {
+                font-size: 1.1rem;
+                padding: 10px 0;
+            }
+            
+            .gold-price {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+            
+            .logo {
+                font-size: 1.1rem;
+            }
+            
+            .hero {
+                padding: calc(var(--header-height) + 40px) 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .price-range {
+                font-size: 1rem;
+            }
+            
+            .live-price {
+                padding: 15px;
+                margin-bottom: 25px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .vision, .buying-process, .gold-products, .payment-options, .testimonials, .services, .excellence, .contact {
+                padding: 60px 0;
+            }
+            
+            .contact-form {
+                padding: 30px 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .toast {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+            }
+            
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+                font-size: 28px;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .vision-values {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .vision-value {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero {
+                padding: calc(var(--header-height) + 30px) 0 50px;
+            }
+            
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            
+            .price-value {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-title::after {
+                width: 60px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .excellence-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .excellence-card {
+                padding: 20px 10px;
+            }
+            
+            .excellence-icon {
+                font-size: 1.8rem;
+            }
+            
+            .excellence-card h3 {
+                font-size: 1rem;
+            }
+            
+            .excellence-card p {
+                font-size: 1.5rem;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 12px;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.95rem;
+            }
+            
+            .contact-info li {
+                font-size: 0.9rem;
+            }
+            
+            .copyright {
+                font-size: 0.85rem;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-methods {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .payment-method {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            
+            .live-price {
+                padding: 12px;
+            }
+            
+            .service-card {
+                padding: 25px 20px;
+            }
+            
+            .service-icon {
+                font-size: 2rem;
+            }
+            
+            .service-card h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Landscape Mode Adjustments */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero {
+                min-height: 80vh;
+                padding: calc(var(--header-height) + 20px) 0 40px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+                margin-bottom: 15px;
+            }
+            
+            .price-range {
+                font-size: 0.9rem;
+                margin: 10px 0;
+            }
+            
+            .live-price {
+                margin-bottom: 15px;
+                padding: 10px;
+            }
+            
+            .vision, .buying-process, .gold-products, .payment-options, .testimonials, .services, .excellence, .contact {
+                padding: 40px 0;
+            }
+        }
+
+        /* High DPI/Retina Display Support */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .hero {
+                background-image: linear-gradient(rgba(15, 43, 70, 0.8), rgba(15, 43, 70, 0.8)), url('https://images.unsplash.com/photo-1610375461246-83df859d849d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=4140&q=80');
+            }
+            
+            [data-theme="light"] .hero {
+                background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1610375461246-83df859d849d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=4140&q=80');
+            }
+        }
+
+        /* Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            .whatsapp-float {
+                animation: none;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            header, .menu-toggle, nav, .btn, .toast, .loader, .whatsapp-float, .theme-toggle {
+                display: none !important;
+            }
+            
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            
+            .hero {
+                background: none !important;
+                color: black !important;
+                padding: 50px 0 !important;
+            }
+            
+            .hero h1, .hero p, .price-range {
+                color: black !important;
+            }
+            
+            .excellence {
+                background: white !important;
+                color: black !important;
+            }
+            
+            .excellence-card {
+                background: white !important;
+                color: black !important;
+                border: 1px solid #ddd !important;
+            }
+            
+            footer {
+                background: white !important;
+                color: black !important;
+            }
+            
+            .footer-column h3 {
+                color: black !important;
+            }
+            
+            .contact-info i {
+                color: black !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-content">
+            <div class="gold-price">
+                <i class="fas fa-coins"></i>
+                <span>GOLD</span>
+                <span id="headerPrice">$6105.40</span>
+                <span class="price-change down" id="headerChange">
+                    <i class="fas fa-arrow-down"></i>
+                    <span id="headerChangeValue">$33.60 (-0.55%)</span>
+                </span>
+            </div>
+            
+            <a href="#" class="logo">
+                <i class="fas fa-mountain"></i>
+                <span>Auric Africa Resources</span>
+            </a>
+            
+            <div class="theme-toggle">
+                <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+            
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#vision">Our Vision</a></li>
+                    <li><a href="#buying-process">How to Buy</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Your One-Stop Gold Buying Destination in Africa</h1>
+            <p>Premium gold trading and mining services with unmatched expertise, ethical sourcing, and proven heritage across Africa's richest gold regions.</p>
+            
+            <div class="price-range">
+                <i class="fas fa-coins"></i> Our gold prices start from $70,000 per kg
+            </div>
+            
+            <div class="live-price">
+                <h2>Live Gold Price</h2>
+                <div class="price-value">
+                    <i class="fas fa-coins"></i>
+                    <span id="livePrice">$6105.40</span>
+                </div>
+                <div class="price-change down" id="livePriceChange">
+                    <i class="fas fa-arrow-down"></i>
+                    <span id="livePriceChangeValue">$33.60 (-0.55%)</span>
+                </div>
+            </div>
+            
+            <div class="btn-group">
+                <a href="#products" class="btn">View Products</a>
+                <a href="https://wa.me/qr/N3XXEGLGT5WQC1" target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Vision Section -->
+    <section class="vision" id="vision">
+        <div class="container">
+            <div class="vision-content">
+                <h2>Our Vision: Redefining Gold Excellence</h2>
+                <p>Auric Africa is dedicated to setting new benchmarks in the global gold industry. We combine a rich legacy of African resources with cutting-edge technology and sustainable practices to deliver gold of unmatched quality and integrity.</p>
+                <p>Our operations are built on transparency, ethical sourcing, and a commitment to positive community impact. We are not just trading gold; we are building a future where value is pure and heritage is honored.</p>
+                
+                <div class="vision-values">
+                    <div class="vision-value">
+                        <i class="fas fa-gem"></i>
+                        <h3>Quality</h3>
+                    </div>
+                    <div class="vision-value">
+                        <i class="fas fa-handshake"></i>
+                        <h3>Integrity</h3>
+                    </div>
+                    <div class="vision-value">
+                        <i class="fas fa-leaf"></i>
+                        <h3>Sustainability</h3>
+                    </div>
+                    <div class="vision-value">
+                        <i class="fas fa-users"></i>
+                        <h3>Community</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Buying Process Section -->
+    <section class="buying-process" id="buying-process">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Simple & Secure Buying Process</h2>
+                <p class="section-subtitle">Our streamlined process makes buying gold in Africa easy and secure</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <i class="fas fa-comments"></i>
+                    <h3>Consultation</h3>
+                    <p>Connect with our gold experts via WhatsApp to discuss your requirements</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <i class="fas fa-file-contract"></i>
+                    <h3>Agreement</h3>
+                    <p>Receive a detailed quote with terms and conditions for your review</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <i class="fas fa-money-check-alt"></i>
+                    <h3>Payment</h3>
+                    <p>Complete secure payment through our verified channels</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <i class="fas fa-shipping-fast"></i>
+                    <h3>Delivery</h3>
+                    <p>Receive your gold with full documentation and authenticity certification</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gold Products Section -->
+    <section class="gold-products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Gold Products</h2>
+                <p class="section-subtitle">Premium gold products sourced directly from Africa's richest mines</p>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1610374894347-31c015d7c3bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+                        <div class="product-badge">Popular</div>
+                    </div>
+                    <div class="product-content">
+                        <h3>Gold Bars</h3>
+                        <p>Pure 24K gold bars in various weights from 1g to 1kg, sourced directly from African mines.</p>
+                        <div class="product-price">From $70,000 per kg</div>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> 99.9% purity guaranteed</li>
+                            <li><i class="fas fa-check-circle"></i> LBMA certified</li>
+                            <li><i class="fas fa-check-circle"></i> Full traceability</li>
+                        </ul>
+                        <a href="https://wa.me/qr/N3XXEGLGT5WQC1" target="_blank" class="btn btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> Inquire Now
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1598128558393-70ff21433be0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+                        <div class="product-badge">Premium</div>
+                    </div>
+                    <div class="product-content">
+                        <h3>Gold Nuggets</h3>
+                        <p>Natural gold nuggets in their original form, perfect for collectors and investors.</p>
+                        <div class="product-price">From $75,000 per kg</div>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> Natural formation</li>
+                            <li><i class="fas fa-check-circle"></i> Unique specimens</li>
+                            <li><i class="fas fa-check-circle"></i> Certificate of authenticity</li>
+                        </ul>
+                        <a href="https://wa.me/qr/N3XXEGLGT5WQC1" target="_blank" class="btn btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> Inquire Now
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1620321023374-1b1dce14e41f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+                        <div class="product-badge">Investment</div>
+                    </div>
+                    <div class="product-content">
+                        <h3>Gold Coins</h3>
+                        <p>Limited edition and investment-grade gold coins from African mints.</p>
+                        <div class="product-price">From $72,000 per kg</div>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> Limited editions</li>
+                            <li><i class="fas fa-check-circle"></i> Investment grade</li>
+                            <li><i class="fas fa-check-circle"></i> Collector's value</li>
+                        </ul>
+                        <a href="https://wa.me/qr/N3XXEGLGT5WQC1" target="_blank" class="btn btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> Inquire Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Payment Options Section -->
+    <section class="payment-options">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Secure Payment Options</h2>
+                <p class="section-subtitle">Multiple secure payment methods for your convenience</p>
+            </div>
+            
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <i class="fas fa-university"></i>
+                    <h3>Bank Transfer</h3>
+                </div>
+                
+                <div class="payment-method">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Cryptocurrency</h3>
+                </div>
+                
+                <div class="payment-method">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <h3>Letter of Credit</h3>
+                </div>
+                
+                <div class="payment-method">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h3>Escrow Services</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Client Testimonials</h2>
+                <p class="section-subtitle">Hear from our satisfied clients worldwide</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Auric Africa provided exceptional service throughout our gold purchasing process. Their transparency and commitment to quality is unmatched in the industry."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JD</div>
+                        <div class="author-info">
+                            <h4>James Davidson</h4>
+                            <p>Investment Manager, USA</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "The quality of gold we received exceeded our expectations. The documentation was thorough and the entire process was seamless."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SK</div>
+                        <div class="author-info">
+                            <h4>Sarah Kimani</h4>
+                            <p>Jewelry Business Owner, Kenya</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "As a first-time gold buyer, I appreciated the guidance and expertise provided by the Auric Africa team. They made the entire process simple and secure."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ML</div>
+                        <div class="author-info">
+                            <h4>Michael Lee</h4>
+                            <p>Private Investor, Singapore</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Comprehensive Services</h2>
+                <p class="section-subtitle">End-to-end solutions for all your gold trading needs</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Premium Gold Trading</h3>
+                    <p>Direct access to Africa's finest gold reserves with competitive pricing and guaranteed authenticity certification.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Modern Refining</h3>
+                    <p>State-of-the-art refining facilities ensuring 99.9% purity with full traceability and quality documentation.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-globe-africa"></i>
+                    </div>
+                    <h3>Ethical Sourcing</h3>
+                    <p>Responsible mining practices supporting local communities while maintaining the highest environmental standards.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Investment Advisory</h3>
+                    <p>Expert guidance on gold investments with market analysis and strategic portfolio recommendations.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Secure Logistics</h3>
+                    <p>Comprehensive logistics solutions with insured transport and secure storage facilities worldwide.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Partnership Programs</h3>
+                    <p>Exclusive partnership opportunities for institutional investors and corporate clients seeking reliable gold supply.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Excellence Section -->
+    <section class="excellence" id="excellence">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Proven Excellence</h2>
+                <p class="section-subtitle">Our commitment to quality and transparency has earned us recognition across the global gold trading industry.</p>
+            </div>
+            
+            <div class="excellence-grid">
+                <div class="excellence-card">
+                    <div class="excellence-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>ISO 9001:2015</h3>
+                    <p>Quality Management</p>
+                </div>
+                
+                <div class="excellence-card">
+                    <div class="excellence-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>LBMA Certified</h3>
+                    <p>London Bullion Market</p>
+                </div>
+                
+                <div class="excellence-card">
+                    <div class="excellence-icon">
+                        <i class="fas fa-dove"></i>
+                    </div>
+                    <h3>Conflict-Free</h3>
+                    <p>Ethical Sourcing</p>
+                </div>
+                
+                <div class="excellence-card">
+                    <div class="excellence-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>AU Compliant</h3>
+                    <p>African Union Standards</p>
+                </div>
+                
+                <div class="excellence-card">
+                    <div class="excellence-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>25+</h3>
+                    <p>Years Experience</p>
+                </div>
+                
+                <div class="excellence-card">
+                    <div class="excellence-icon">
+                        <i class="fas fa-weight-hanging"></i>
+                    </div>
+                    <h3>500+</h3>
+                    <p>Tons Refined</p>
+                </div>
+                
+                <div class="excellence-card">
+                    <div class="excellence-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>50+</h3>
+                    <p>Countries Served</p>
+                </div>
+                
+                <div class="excellence-card">
+                    <div class="excellence-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h3>99.9%</h3>
+                    <p>Gold Purity</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Start Your Gold Buying Journey</h2>
+                <p class="section-subtitle">Connect with our experts to begin your gold purchasing process</p>
+            </div>
+            
+            <form class="contact-form" id="contactForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" required>
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="company">Company/Organization</label>
+                        <input type="text" id="company">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product">Product Interest</label>
+                        <select id="product" required>
+                            <option value="">Select a product</option>
+                            <option value="gold-bars">Gold Bars</option>
+                            <option value="gold-nuggets">Gold Nuggets</option>
+                            <option value="gold-coins">Gold Coins</option>
+                            <option value="custom">Custom Requirements</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="quantity">Estimated Quantity (kg)</label>
+                    <input type="number" id="quantity" min="0.1" step="0.1" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="interests">Tell us about your gold trading or investment interests...</label>
+                    <textarea id="interests" required></textarea>
+                </div>
+                
+                <div class="form-submit">
+                    <a href="https://wa.me/qr/N3XXEGLGT5WQC1" target="_blank" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> Send Message via WhatsApp
+                    </a>
+                </div>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Auric Africa Resources</h3>
+                    <p>Your one-stop destination for buying premium gold in Africa. We deliver excellence through ethical practices and proven expertise.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#vision">Our Vision</a></li>
+                        <li><a href="#buying-process">How to Buy</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Products</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Gold Bars</a></li>
+                        <li><a href="#">Gold Nuggets</a></li>
+                        <li><a href="#">Gold Coins</a></li>
+                        <li><a href="#">Custom Orders</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> info@auricafrica.com</li>
+                        <li><i class="fas fa-phone"></i> +254 (0) 735605469</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li>
+                        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/qr/N3XXEGLGT5WQC1" target="_blank" style="color: var(--primary);">Chat on WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Auric Africa Resources. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/qr/N3XXEGLGT5WQC1" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Message sent successfully!</span>
+    </div>
+    
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const body = document.body;
+        
+        // Check for saved theme preference or default to dark mode
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') {
+            body.setAttribute('data-theme', 'light');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        } else {
+            body.setAttribute('data-theme', 'dark');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        }
+        
+        // Toggle theme
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            if (newTheme === 'light') {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+        
+        // Hide loader when page is fully loaded
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 500);
+        });
+
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#navMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navMenu = document.getElementById('navMenu');
+            const menuToggle = document.getElementById('menuToggle');
+            
+            if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.getElementById('header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form submission - now redirects to WhatsApp
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const company = document.getElementById('company').value;
+            const product = document.getElementById('product').value;
+            const quantity = document.getElementById('quantity').value;
+            const interests = document.getElementById('interests').value;
+            
+            // Create WhatsApp message
+            const productName = document.getElementById('product').options[document.getElementById('product').selectedIndex].text;
+            const message = `Hello, I'm interested in purchasing gold from Auric Africa.%0A%0A` +
+                `Name: ${firstName} ${lastName}%0A` +
+                `Email: ${email}%0A` +
+                `Phone: ${phone}%0A` +
+                `Company: ${company || 'N/A'}%0A` +
+                `Product Interest: ${productName}%0A` +
+                `Estimated Quantity: ${quantity} kg%0A` +
+                `Additional Information: ${interests}`;
+            
+            // Open WhatsApp with pre-filled message
+            const whatsappUrl = `https://wa.me/qr/N3XXEGLGT5WQC1?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Show toast notification
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = 'Opening WhatsApp...';
+            toast.classList.add('show');
+            
+            // Hide toast after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Simulate live gold price updates
+        function updateGoldPrice() {
+            // Base price
+            const basePrice = 6105.40;
+            
+            // Random change between -1% and +1%
+            const changePercent = (Math.random() * 2 - 1).toFixed(2);
+            const changeValue = (basePrice * changePercent / 100).toFixed(2);
+            const newPrice = (basePrice + parseFloat(changeValue)).toFixed(2);
+            
+            // Update all price elements
+            document.getElementById('headerPrice').textContent = `$${newPrice}`;
+            document.getElementById('livePrice').textContent = `$${newPrice}`;
+            
+            // Update change elements
+            const changeText = `${changePercent > 0 ? '+' : ''}${changeValue} (${changePercent > 0 ? '+' : ''}${changePercent}%)`;
+            document.getElementById('headerChangeValue').textContent = changeText;
+            document.getElementById('livePriceChangeValue').textContent = changeText;
+            
+            // Update change direction and color
+            const headerChange = document.getElementById('headerChange');
+            const livePriceChange = document.getElementById('livePriceChange');
+            
+            if (changePercent > 0) {
+                headerChange.classList.remove('down');
+                headerChange.classList.add('up');
+                headerChange.innerHTML = `<i class="fas fa-arrow-up"></i><span>${changeText}</span>`;
+                
+                livePriceChange.classList.remove('down');
+                livePriceChange.classList.add('up');
+                livePriceChange.innerHTML = `<i class="fas fa-arrow-up"></i><span>${changeText}</span>`;
+            } else {
+                headerChange.classList.remove('up');
+                headerChange.classList.add('down');
+                headerChange.innerHTML = `<i class="fas fa-arrow-down"></i><span>${changeText}</span>`;
+                
+                livePriceChange.classList.remove('up');
+                livePriceChange.classList.add('down');
+                livePriceChange.innerHTML = `<i class="fas fa-arrow-down"></i><span>${changeText}</span>`;
+            }
+        }
+        
+        // Update price every 5 seconds
+        setInterval(updateGoldPrice, 5000);
+        
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all cards
+        document.querySelectorAll('.service-card, .excellence-card, .process-step, .product-card, .testimonial-card, .vision-value, .payment-method').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+        
+        // Touch device detection
+        function isTouchDevice() {
+            return 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+        }
+        
+        // Add touch-friendly hover effects for touch devices
+        if (isTouchDevice()) {
+            document.querySelectorAll('.service-card, .excellence-card, .process-step, .product-card, .testimonial-card, .vision-value, .payment-method, .btn').forEach(element => {
+                element.addEventListener('touchstart', function() {
+                    this.style.transform = 'scale(0.98)';
+                });
+                
+                element.addEventListener('touchend', function() {
+                    this.style.transform = '';
+                });
+            });
+        }
+        
+        // Prevent zoom on double tap for iOS
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>
